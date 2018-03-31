@@ -1,0 +1,32 @@
+baseURL = "https://overwaifu.moe/"
+languageCode = "en-us"
+title = "OverWaifu"
+
+theme = "overwaifu"
+
+googleAnalytics = "UA-91426182-2"
+
+[params]
+  key = "value"
+
+  title = "OverWaifu"
+
+[[menu.main]]
+  url = "/waifu"
+  name = "Waifu"
+  weight = 10
+
+[[menu.main]]
+  url = "/husbando"
+  name = "Husbando"
+  weight = 20
+
+[[menu.main]]
+  url = "/results"
+  name = "Results"
+  weight = 30
+
+[[menu.footer]]
+  url = "/credits"
+  name = "Credits"
+  weight = 10

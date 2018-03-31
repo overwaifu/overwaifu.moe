@@ -1,0 +1,21 @@
+items:
+
+  - type: fame_waifu_skin
+    title: Fame Waifu Skin
+    description: All Content
+    text: "{{ .name }}'s {{ .skin.name }} skin has {{ .skin.score.all }} entries on Sankaku Channel."
+
+  - type: hot_waifu_skin
+    title: Hot Waifu Skin
+    description: Explicit content
+    text: "{{ .name }} has {{ .skin.score.explicit }} lewdy images in her {{ .skin.name }} skin on Sankaku Channel."
+
+  - type: pure_waifu_skin
+    title: Pure Waifu Skin
+    description: Safe to all ratio
+    text: "If {{ .name }} in her {{ .skin.name }} skin, she prefer to stay in it in {{ .skin.purity }}% of time."
+
+  - type: lewd_waifu_skin
+    title: Lewd Waifu Skin
+    description: Explicit to all ratio
+    text: "The most of the time ({{ .skin.lewdness }}%) {{ .name }} doesn't wear her {{ .skin.name }} skin."

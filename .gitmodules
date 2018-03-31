@@ -1,0 +1,3 @@
+[submodule "themes/overwaifu"]
+	path = themes/overwaifu
+	url = git@github.com:overwaifu/hugo-overwaifu-theme.git

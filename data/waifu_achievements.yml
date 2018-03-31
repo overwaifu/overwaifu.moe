@@ -1,0 +1,37 @@
+items:
+
+  - type: fame_waifu
+    title: Fame Waifu
+    description: All Content
+    text: "{{ .name }} is the most popular waifu in the Overwatch. There are {{ .score.all }} images with {{ .real_name }} on Sankaku Channel."
+
+  - type: hot_waifu
+    title: Hot Waifu
+    description: Explicit content
+    text: "{{ .name }} is the hottest waifu in the Overwatch. There are {{ .score.explicit }} explicit images with {{ .real_name }} on Sankaku Channel."
+
+  - type: pure_waifu
+    title: Pure Waifu
+    description: Safe to all ratio
+    text: "{{ .name }} ({{ .real_name }}) has {{ .purity }}% purity."
+
+  - type: lewd_waifu
+    title: Lewd Waifu
+    description: Explicit to all ratio
+    text: "{{ .name }} ({{ .real_name }}) has {{ .lewdness }}% lewdness."
+
+  - type: fake_waifu
+    sex: husbando
+    title: Fake Waifu
+    description: Gender swaps
+    text: "{{ .name }} ({{ .real_name }}) was waifu {{ .score.gender_swaps }} times."
+
+  - type: virgin_killer_waifu
+    title: Virgin killer waifu
+    description: Virgin killer sweater
+    text: "{{ .name }} ({{ .real_name }}) putted on a [virgin killer sweater](http://knowyourmeme.com/memes/virgin-killing-sweater) {{ .score.virgin_killer_sweater }} times."
+
+  - type: selfie_waifu
+    title: Selfie waifu
+    description: Selfie fan
+    text: "{{ .name }} ({{ .real_name }}) made {{ .score.selfie }} selfies. She is true selfie fan."
