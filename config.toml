@@ -6,11 +6,6 @@ theme = "overwaifu"
 
 googleAnalytics = "UA-91426182-2"
 
-[params]
-  key = "value"
-
-  title = "OverWaifu"
-
 [[menu.main]]
   url = "/waifu"
   name = "Waifu"
