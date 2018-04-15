@@ -30,7 +30,6 @@ Skin images were taken from [Overwatch Gamepedia](https://overwatch.gamepedia.co
 #### Icons
 
 * [FontAwesome](https://fontawesome.com/)
-* [Octoicons](https://octicons.github.com/)
 * [Overwatch Heroes icon font](https://github.com/255kb/overwatch-heroes-icon-font)
 
 ***
