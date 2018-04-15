@@ -1,0 +1,40 @@
+{
+  "name": "overwaifu",
+  "version": "1.0.0",
+  "description": "Hugo theme for OverWaifu.moe",
+  "main": "sass/main.sass",
+  "scripts": {
+    "build": "npm run build-clean && npm run build-sass && npm run build-postcss",
+    "build-clean": "rimraf static/css",
+    "build-postcss": "postcss --use autoprefixer cssnano css-mqpacker --no-map --output static/css/main.css static/css/main.css",
+    "build-sass": "node-sass --output-style expanded sass/main.sass static/css/main.css",
+    "serve": "npm run build-sass -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/overwaifu/overwaifu.moe"
+  },
+  "keywords": [
+    "overwaifu",
+    "responsive",
+    "flexbox"
+  ],
+  "author": "Leonid Boykov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/overwaifu/overwaifu.moe/issues"
+  },
+  "homepage": "https://github.com/overwaifu/overwaifu.moe#readme",
+  "devDependencies": {
+    "autoprefixer": "^8.2.0",
+    "css-mqpacker": "^6.0.2",
+    "cssnano": "^3.10.0",
+    "node-sass": "^4.7.2",
+    "postcss-cli": "^5.0.0",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "bulma": "^0.7.0",
+    "bulma-tooltip": "^1.0.4"
+  }
+}
