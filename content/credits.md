@@ -1,5 +1,6 @@
 ---
 title: Credits
+menu: footer
 ---
 
 #### Disclaimer
