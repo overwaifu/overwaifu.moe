@@ -1,0 +1,40 @@
+{{ define "content" }}
+
+{{ $fame_waifu_skin_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.fame_waifu_skin.character }}
+{{ $fame_waifu_skin_skin := index $fame_waifu_skin_waifu.skins .Site.Data.overwaifu.achievements.fame_waifu_skin.skin }}
+{{ $hot_waifu_skin_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.hot_waifu_skin.character }}
+{{ $hot_waifu_skin_skin := index $hot_waifu_skin_waifu.skins .Site.Data.overwaifu.achievements.hot_waifu_skin.skin }}
+{{ $pure_waifu_skin_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.pure_waifu_skin.character }}
+{{ $pure_waifu_skin_skin := index $pure_waifu_skin_waifu.skins .Site.Data.overwaifu.achievements.pure_waifu_skin.skin }}
+{{ $lewd_waifu_skin_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.lewd_waifu_skin.character }}
+{{ $lewd_waifu_skin_skin := index $lewd_waifu_skin_waifu.skins .Site.Data.overwaifu.achievements.lewd_waifu_skin.skin }}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title is-2">{{ .Title }}</h1>
+    <div class="content">
+      Images count: {{ $.Site.Data.overwaifu.posts_count }}.
+    </div>
+    <div class="subtitle heading is-overwatch is-4 has-text-success">
+      {{ .Content }}
+    </div>
+    <div class="columns is-multiline">
+      {{ range $.Site.Data.waifu_achievements.items }}
+        {{ $char_key := index $.Site.Data.overwaifu.achievements .type }}
+        {{ $character := index $.Site.Data.overwaifu.characters $char_key.character }}
+        {{ partial "results/waifu" (dict "context" $.Site "character" $character "achievement" .) }}
+      {{ end }}
+    </div>
+    <hr>
+    <div class="columns is-multiline">
+      {{ range $.Site.Data.skins_achievements.items }}
+        {{ $skins_achievement := index $.Site.Data.overwaifu.achievements .type }}
+        {{ $character := index $.Site.Data.overwaifu.characters $skins_achievement.character }}
+        {{ $skin := index $character.skins $skins_achievement.skin }}
+        {{ partial "results/skin" (dict "context" $.Site "character" $character "skin" $skin "achievement" .) }}
+        <br>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

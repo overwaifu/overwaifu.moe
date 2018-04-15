@@ -1,0 +1,36 @@
+{{ with .character }}
+{{ $purity := math.Round (mul $.skin.score.pure 100) }}
+{{ $lewdness := math.Round (mul $.skin.score.lewd 100) }}
+
+{{ $text := $.achievement.text }}
+{{ $text := replace $text "{{ .name }}" .name }}
+{{ $text := replace $text "{{ .real_name }}" .real_name }}
+{{ $text := replace $text "{{ .skin.name }}" $.skin.name }}
+{{ $text := replace $text "{{ .skin.score.all }}" $.skin.score.all }}
+{{ $text := replace $text "{{ .skin.score.explicit }}" $.skin.score.explicit }}
+{{ $text := replace $text "{{ .skin.purity }}" $purity }}
+{{ $text := replace $text "{{ .skin.lewdness }}" $lewdness }}
+
+<div class="column is-half">
+  <h1 class="title is-2">{{ $.achievement.title }}</h1>
+  <h3 class="subtitle heading is-4 has-text-grey-light">{{ $.achievement.description }}</h3>
+  <div class="card ">
+    <div class="card-content">
+      <div class="columns is-mobile">
+        <div class="column is-3-mobile is-2-tablet">
+          <span class="icon is-large ow-ohi-{{ .key }}" style="font-size: 3em"></span>
+        </div>
+        <div class="column">
+          <p class="title heading is-4">{{ .name }} <span class="has-text-{{ $.skin.rarity }}">{{ $.skin.name }}</span></p>
+          <p class="subtitle heading is-6 is-overwatch has-text-grey-light">{{ .real_name }}</p>
+        </div>
+      </div>
+      <div class="columns is-mobile">
+        <div class="column">
+          <p>{{ $text | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

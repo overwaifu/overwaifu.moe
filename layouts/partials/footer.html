@@ -1,0 +1,22 @@
+<footer class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <div>
+              <p>
+                &copy; {{ now.Year }} <a href="{{ "/" | absLangURL }}">{{ .Site.Title }}.moe</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="level-right">
+          {{ range .Site.Menus.footer }}
+          <a class="level-item" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

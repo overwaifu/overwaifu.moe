@@ -2,7 +2,7 @@ baseURL = "https://overwaifu.moe/"
 languageCode = "en-us"
 title = "OverWaifu"
 
-theme = "overwaifu"
+# theme = "overwaifu"
 
 googleAnalytics = "UA-91426182-2"
 

@@ -1,0 +1,57 @@
+{{ define "content" }}
+<section class="section">
+  <div class="container">
+    <h1 class="title is-2 is-overwatch">{{ .Title }}</h1>
+    <div class="content">{{ .Content }}</div>
+    <div class="columns is-multiline">
+      {{ range where (sort .Site.Data.overwaifu.characters "score.all" "desc") "sex" "male" }}
+      <div class="column is-half">
+        <div class="card is-fullheight">
+          <div class="card-content">
+            <div class="columns is-mobile">
+              <div class="column is-3-mobile is-2-tablet">
+                <span class="icon is-large ow-ohi-{{ .key }}" style="font-size: 3em"></span>
+              </div>
+              <div class="column">
+                <p class="title heading is-4">{{ .name }}</p>
+                <p class="subtitle heading is-6 is-overwatch has-text-grey-light">{{ .real_name }}</p>
+              </div>
+            </div>
+            <div class="columns is-mobile">
+              <div class="column has-text-centered">
+                <p><span class="icon tooltip is-tooltip-top is-tooltip-primary" data-tooltip="Skins"><i class="fas fa-male has-text-primary"></i></span></p>
+                <p class="title is-5">{{ len .skins }}</p>
+              </div>
+              <div class="column has-text-centered">
+                <p><span class="icon tooltip is-tooltip-top is-tooltip-success" data-tooltip="Score (all images)"><i class="fas fa-chart-line has-text-success"></i></span></p>
+                <p class="title is-5">{{ .score.all }}</p>
+              </div>
+              <div class="column has-text-centered">
+                <p><span class="icon tooltip is-tooltip-top is-tooltip-danger" data-tooltip="Explicit images"><i class="fas fa-fire has-text-danger"></i></span></p>
+                <p class="title is-5">{{ .score.explicit }}</p>
+              </div>
+              <div class="column has-text-centered">
+                <p><span class="icon tooltip is-tooltip-top is-tooltip-info" data-tooltip="Gender swaps"><i class="fas fa-venus-mars has-text-info"></i></span></p>
+                <p class="title is-5">{{ .score.gender_swaps }}</p>
+              </div>
+            </div>
+            <div class="columns is-mobile">
+              <div class="column">
+                {{ range sort .skins "score.all" "desc" }}
+                {{ if gt .score.all 0 }}
+                <span class="is-uppercase is-size-6 has-text-weight-bold">
+                  <span class="has-text-{{ .rarity }}">{{ .name }}</span>&nbsp;({{ .score.all }}),
+                </span>
+                {{ end }}
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+</section>
+{{ end }}

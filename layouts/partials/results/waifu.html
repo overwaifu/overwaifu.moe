@@ -1,0 +1,38 @@
+{{ with .character }}
+{{ $purity := math.Round (mul .score.pure 100) }}
+{{ $lewdness := math.Round (mul .score.lewd 100) }}
+
+{{ $text := $.achievement.text }}
+{{ $text := replace $text "{{ .name }}" .name }}
+{{ $text := replace $text "{{ .real_name }}" .real_name }}
+{{ $text := replace $text "{{ .score.all }}" .score.all }}
+{{ $text := replace $text "{{ .score.explicit }}" .score.explicit }}
+{{ $text := replace $text "{{ .purity }}" $purity }}
+{{ $text := replace $text "{{ .lewdness }}" $lewdness }}
+{{ $text := replace $text "{{ .score.virgin_killer_sweater }}" .score.virgin_killer_sweater }}
+{{ $text := replace $text "{{ .score.selfie }}" .score.selfie }}
+{{ $text := replace $text "{{ .score.gender_swaps }}" .score.gender_swaps }}
+
+<div class="column is-half">
+  <h1 class="title is-2">{{ $.achievement.title }}</h1>
+  <h3 class="subtitle heading is-4 has-text-grey-light">{{ $.achievement.description }}</h3>
+  <div class="card ">
+    <div class="card-content">
+      <div class="columns is-mobile">
+        <div class="column is-3-mobile is-2-tablet">
+          <span class="icon is-large ow-ohi-{{ .key }}" style="font-size: 3em"></span>
+        </div>
+        <div class="column">
+          <p class="title heading is-4">{{ .name }}</p>
+          <p class="subtitle heading is-6 is-overwatch has-text-grey-light">{{ .real_name }}</p>
+        </div>
+      </div>
+      <div class="columns is-mobile">
+        <div class="column">
+          <p>{{ $text | markdownify }} {{ if (and (eq $.achievement.type "selfie_waifu") (ne .key "dva")) }}Yep, not D.Va, she made only {{ $.context.Data.overwaifu.waifu.dva.score.selfie }}.{{ end }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

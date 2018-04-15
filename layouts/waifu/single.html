@@ -1,0 +1,119 @@
+{{ define "content" }}
+{{ $char := index .Site.Data.overwaifu.characters .Params.slug }}
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div class="column is-4">
+        <div class="columns is-mobile">
+          <div class="column is-4-tablet is-5-mobile has-text-centered">
+            <p class="image is-128x128px">
+              <img src="/img/waifu/{{ $char.key }}.png">
+            </p>
+          </div>
+          <div class="column is-8-tablet is-7-mobile">
+            <h1 class="title heading is-2">{{ .Title }}</h1>
+            <h3 class="subtitle heading is-4 has-text-grey-light">{{ $char.real_name }}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="column is-8">
+        <div class="columns is-mobile">
+          <div class="column is-3-tablet is-3-mobile has-text-centered">
+            <p><span class="icon tooltip is-tooltip-top is-tooltip-primary" data-tooltip="Skins"><i class="fas fa-female has-text-primary"></i></span></p>
+            <p class="title is-5">{{ len $char.skins }}</p>
+          </div>
+          <div class="column is-3-tablet is-3-mobile has-text-centered">
+            <p><span class="icon tooltip is-tooltip-top is-tooltip-success" data-tooltip="Safe images"><i class="far fa-heart has-text-success"></i></span></p>
+            <p class="title is-5">{{ $char.score.safe }}</p>
+          </div>
+          <div class="column is-3-tablet is-3-mobile has-text-centered">
+            <p><span class="icon tooltip is-tooltip-top is-tooltip-warning" data-tooltip="Questionable images"><i class="fas fa-heart has-text-warning"></i></span></p>
+            <p class="title is-5">{{ $char.score.questionable }}</p>
+          </div>
+          <div class="column is-3-tablet is-3-mobile has-text-centered">
+            <p><span class="icon tooltip is-tooltip-top is-tooltip-danger" data-tooltip="Explicit images"><i class="fas fa-fire has-text-danger"></i></span></p>
+            <p class="title is-5">{{ $char.score.explicit }}</p>
+          </div>
+        </div>
+        <div class="columns is-mobile">
+          <div class="column">
+            Pure: {{ math.Round (mul $char.score.pure 100) }}%
+            <progress class="progress is-success is-small" value="{{ $char.score.pure }}" max="1">{{ $char.score.pure }}</progress>
+          </div>
+          <div class="column">
+            Lewd: {{ math.Round (mul $char.score.lewd 100) }}%
+            <progress class="progress is-danger is-small" value="{{ $char.score.lewd }}" max="1">{{ $char.score.lewd }}</progress>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">{{ .Content }}</div>
+    <div class="content">
+      {{ $char.name }} ({{ $char.real_name }}) has {{ len $char.skins }} skins. There are {{ $char.score.all }} pictures in <a href="https://chan.sankakucomplex.com/?{{ querify "tags" $char.tag | safeURL }}">Sankaku Channel</a> collection ({{ $char.score.safe }} safe, {{ $char.score.questionable }} questionable and {{ $char.score.explicit }} explicit images). {{ if gt $char.score.virgin_killer_sweater 0 }}Also she putted on a <a href="http://knowyourmeme.com/memes/virgin-killing-sweater">virgin killer sweater</a> {{ $char.score.virgin_killer_sweater }} times.{{ end }} {{ if gt $char.score.selfie 0 }}{{ $char.name }} made {{ $char.score.selfie }} selfies.{{ end }}
+    </div>
+    <div class="columns is-multiline">
+      {{ range sort $char.skins "score.all" "desc" }}
+      {{ if gt .score.all 0 }}
+      <div class="column is-one-third-tablet is-one-quarter-desktop">
+        <div class="card is-fullheight">
+          <div class="card-image">
+            <figure class="image is-1by1">
+              <img src="/img/skins/{{ $char.key }}/{{ .key }}.png">
+            </figure>
+          </div>
+          <div class="card-content">
+            <p class="title heading is-4 has-text-{{ .rarity }}">{{ .name }}</p>
+            <p class="subtitle heading is-6 has-text-grey-light">{{ .event | default "Default" }}</p>
+
+            <div class="columns is-mobile">
+              <div class="column has-text-centered">
+                <p><span class="icon tooltip is-tooltip-top is-tooltip-success" data-tooltip="Safe images"><i class="far fa-heart has-text-success"></i></span></p>
+                <p class="title is-5">{{ .score.safe | default 0 }}</p>
+              </div>
+              <div class="column has-text-centered">
+                <p><span class="icon tooltip is-tooltip-top is-tooltip-warning" data-tooltip="Questionable images"><i class="fas fa-heart has-text-warning"></i></span></p>
+                <p class="title is-5">{{ .score.questionable | default 0 }}</p>
+              </div>
+              <div class="column has-text-centered">
+                <p><span class="icon tooltip is-tooltip-top is-tooltip-danger" data-tooltip="Explicit images"><i class="fas fa-fire has-text-danger"></i></span></p>
+                <p class="title is-5">{{ .score.explicit | default 0 }}</p>
+              </div>
+            </div>
+            {{/*
+            {{ if gt .score.pure 0 }}
+            <progress class="progress is-success is-small" value="{{ .score.pure }}" max="1">{{ .score.pure }}</progress>
+            {{ end }}
+            {{ if gt .score.lewd 0 }}
+            <progress class="progress is-danger is-small" value="{{ .score.lewd }}" max="1">{{ .score.lewd }}</progress>
+            {{ end }}
+            */}}
+          </div>
+          <div class="card-footer">
+            <a href="https://chan.sankakucomplex.com/?{{ querify "tags" (index .tags 0) | safeURL }}" target="_blank" class="card-footer-item">View on Sankaku Channel</a>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+
+    <div class="content is-small">
+      <hr />
+      <blockquote>
+        <p>
+          <span class="icon"><i class="far fa-heart has-text-success"></i></span> Safe posts are images that you would not feel guilty looking at openly in public. Pictures of nudes, exposed nipples or pubic hair, cameltoe, or any sort of sexually suggestive pose are NOT safe and belong in questionable. Swimsuits and lingerie are borderline cases; some are safe, some are questionable.
+          <br />
+          <span class="icon"><i class="fas fa-heart has-text-warning"></i></span> Basically anything that isn't safe or explicit. This is the great middle area, and since it includes unrated posts, you shouldn't really expect anything one way or the other when browsing questionable posts.
+          <br />
+          <span class="icon"><i class="fas fa-fire has-text-danger"></i></span> Any image where the vagina or penis are exposed and easily visible. This includes depictions of sex, masturbation, or any sort of penetration.
+        </p>
+        <p>
+          See <a href="/credits">credits</a> for proper credits.
+        </p>
+      </blockquote>
+    </div>
+  </div>
+</div>
+</section>
+{{ end }}
