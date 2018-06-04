@@ -27,11 +27,11 @@ items:
     text: "{{ .name }} ({{ .real_name }}) was waifu {{ .score.gender_swaps }} times."
 
   - type: virgin_killer_waifu
-    title: Virgin killer waifu
-    description: Virgin killer sweater
+    title: Virgin Killer Waifu
+    description: Virgin Killer Sweater
     text: "{{ .name }} ({{ .real_name }}) putted on a [virgin killer sweater](http://knowyourmeme.com/memes/virgin-killing-sweater) {{ .score.virgin_killer_sweater }} times."
 
   - type: selfie_waifu
-    title: Selfie waifu
+    title: Selfie Waifu
     description: Selfie fan
-    text: "{{ .name }} ({{ .real_name }}) made {{ .score.selfie }} selfies. She is true selfie fan."
+    text: "{{ .name }} ({{ .real_name }}) made {{ .score.selfie }} selfies with herself."
