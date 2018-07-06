@@ -26,11 +26,11 @@
   },
   "homepage": "https://github.com/overwaifu/overwaifu.moe#readme",
   "devDependencies": {
-    "autoprefixer": "^8.6.0",
+    "autoprefixer": "^8.6.5",
     "css-mqpacker": "^6.0.2",
     "cssnano": "^3.10.0",
-    "node-sass": "^4.9.0",
-    "postcss-cli": "^5.0.0",
+    "node-sass": "^4.9.1",
+    "postcss-cli": "^5.0.1",
     "rimraf": "^2.6.2"
   },
   "dependencies": {
