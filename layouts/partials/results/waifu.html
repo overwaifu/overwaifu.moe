@@ -16,22 +16,18 @@
 <div class="column is-half">
   <h1 class="title is-2">{{ $.achievement.title }}</h1>
   <h3 class="subtitle heading is-4 has-text-grey-light">{{ $.achievement.description }}</h3>
-  <div class="card ">
+  <div class="card is-horizontal">
+    {{ if eq .sex "female" }}
+    <div class="card-image">
+      <figure class="image is-1by1">
+        <img src="/img/waifu/{{ .key }}.png">
+      </figure>
+    </div>
+    {{ end }}
     <div class="card-content">
-      <div class="columns is-mobile">
-        <div class="column is-3-mobile is-2-tablet">
-          <!-- <span class="icon is-large ow-ohi-{{ .key }}" style="font-size: 3em"></span> -->
-        </div>
-        <div class="column">
-          <p class="title heading is-4">{{ .name }}</p>
-          <p class="subtitle heading is-6 is-overwatch has-text-grey-light">{{ .real_name }}</p>
-        </div>
-      </div>
-      <div class="columns is-mobile">
-        <div class="column">
-          <p>{{ $text | markdownify }}</p>
-        </div>
-      </div>
+      <h2 class="title heading is-4">{{ .name }}</h2>
+      <h3 class="subtitle heading is-6 is-overwatch has-text-grey-light">{{ .real_name }}</h3>
+      <p>{{ $text | markdownify }}</p>
     </div>
   </div>
 </div>
