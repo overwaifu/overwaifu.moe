@@ -8,7 +8,7 @@
     {{ .Hugo.Generator }}
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
-    <link href="https://file.myfontastic.com/Ay8v6MHpqbfXSHzdJyvjYH/icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
 
     <title>{{ .Title }} - {{ .Site.Title }}</title>
@@ -29,7 +29,6 @@
       {{ partialCached "footer" . }}
     {{ end }}
     <script src="/js/main.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     {{ template "_internal/google_analytics_async.html" . }}
   </body>
 </html>
