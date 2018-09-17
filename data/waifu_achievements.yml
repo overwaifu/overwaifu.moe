@@ -20,11 +20,11 @@ items:
     description: Explicit to all ratio
     text: "{{ .name }} ({{ .real_name }}) has {{ .lewdness }}% lewdness."
 
-  - type: fake_waifu
-    sex: husbando
-    title: Fake Waifu
-    description: Gender swaps
-    text: "{{ .name }} ({{ .real_name }}) was waifu {{ .score.gender_swaps }} times."
+  # - type: fake_waifu
+  #   sex: husbando
+  #   title: Fake Waifu
+  #   description: Gender swaps
+  #   text: "{{ .name }} ({{ .real_name }}) was waifu {{ .score.gender_swaps }} times."
 
   - type: virgin_killer_waifu
     title: Virgin Killer Waifu
