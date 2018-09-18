@@ -28,9 +28,7 @@
           {{ end }}
           {{ range first 2 (after 1 (sort $.Site.Data.overwaifu.characters "score.all" "desc")) }}
           <div class="columns is-mobile">
-            <div class="column is-hidden-mobile is-2-tablet is-offset-1-tablet">
-              <!-- <span class="icon is-large ow-ohi-{{ .key }}" style="font-size: 3em"></span> -->
-            </div>
+            <div class="column is-hidden-mobile is-2-tablet is-offset-1-tablet"></div>
             <div class="column">
               <p class="title heading is-5">{{ .name }}</p>
               <p class="subtitle heading is-6 is-overwatch">{{ .real_name }}</p>
@@ -53,14 +51,12 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns is-vcentered">
-        <div class="column has-text-centered is-hidden-mobile">
-          <!-- <span class="ow-ohi-tracer" style="font-size: 10rem"></span> -->
-        </div>
+        <div class="column has-text-centered is-hidden-mobile"></div>
         <div class="column is-two-thirds">
           <h2 class="title is-2 is-overwatch">What is OverWaifu.moe?</h2>
           <p class="is-size-4-tablet">OverWaifu.moe is a website developed by an OverWatch fan. As you may notice some characters get more attention than others. While there are several websites which track the pickrate this website tracks the popularity according to characters' personality. Right now, all this statistics is gathered from Sankaku Channel.</p>
           <br>
-          <a class="button is-primary is-large" href="/waifu">Check it out</a>
+          <a class="button is-primary is-large is-rounded" href="/waifu">Check it out</a>
         </div>
       </div>
     </div>
@@ -89,9 +85,7 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns is-vcentered">
-        <div class="column has-text-centered is-hidden-mobile">
-          <!-- <span class="ow-ohi-arg" style="font-size: 10rem"></span> -->
-        </div>
+        <div class="column has-text-centered is-hidden-mobile"></div>
         <div class="column is-two-thirds">
           <h2 class="title is-2 is-overwatch">ARG free zone</h2>
           <p class="is-size-4-tablet">We have no secrets from you. Also we have no timers and countdowns. But even if you really want a countown... we still don't have any.</p>
@@ -110,7 +104,7 @@
           <h2 class="title is-2 is-overwatch">Hey, what about female players?</h2>
           <p class="is-size-4-tablet">We also provide statistics for husbando. But there are not many images with them.</p>
           <br>
-          <a class="button is-primary is-outlined is-large" href="/husbando">Check it out</a>
+          <a class="button is-primary is-outlined is-large is-rounded" href="/husbando">Check it out</a>
         </div>
         <div class="column has-text-centered is-hidden-mobile">
           {{ $fake_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.fake_waifu.character }}
