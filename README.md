@@ -1,7 +1,6 @@
 # OverWaifu.moe
 
-[![dependencies Status](https://david-dm.org/overwaifu/hugo-overwaifu-theme/status.svg)](https://david-dm.org/overwaifu/overwaifu.moe)
-[![devDependencies Status](https://david-dm.org/overwaifu/hugo-overwaifu-theme/dev-status.svg)](https://david-dm.org/overwaifu/overwaifu.moe?type=dev)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=overwaifu/overwaifu.moe)](https://dependabot.com)
 
 This is the source code of overwaifu.moe website powered by [Hugo](https://gohugo.io/).
 
