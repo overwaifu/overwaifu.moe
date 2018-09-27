@@ -1,7 +1,12 @@
+const purgecss = require('@fullhuman/postcss-purgecss')
+
 module.exports = {
   plugins: [
     require('autoprefixer')({}),
     require('cssnano')({}),
-    require('css-mqpacker')({})
+    purgecss({
+      content: ['./**/*.html', './**/*.js'],
+      whitelistPatterns: [/^has-text-/]
+    })
   ]
 }
