@@ -1,13 +1,13 @@
 {{ define "content" }}
 
-{{ $fame_waifu_skin_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.fame_waifu_skin.character }}
-{{ $fame_waifu_skin_skin := index $fame_waifu_skin_waifu.skins .Site.Data.overwaifu.achievements.fame_waifu_skin.skin }}
-{{ $hot_waifu_skin_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.hot_waifu_skin.character }}
-{{ $hot_waifu_skin_skin := index $hot_waifu_skin_waifu.skins .Site.Data.overwaifu.achievements.hot_waifu_skin.skin }}
-{{ $pure_waifu_skin_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.pure_waifu_skin.character }}
-{{ $pure_waifu_skin_skin := index $pure_waifu_skin_waifu.skins .Site.Data.overwaifu.achievements.pure_waifu_skin.skin }}
-{{ $lewd_waifu_skin_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.lewd_waifu_skin.character }}
-{{ $lewd_waifu_skin_skin := index $lewd_waifu_skin_waifu.skins .Site.Data.overwaifu.achievements.lewd_waifu_skin.skin }}
+{{ $fame_waifu_skin_waifu := index (where .Site.Data.overwaifu.characters ".key" .Site.Data.overwaifu.achievements.fame_waifu_skin.character) 0 }}
+{{ $fame_waifu_skin_skin := index (where $fame_waifu_skin_waifu.skins ".key" .Site.Data.overwaifu.achievements.fame_waifu_skin.skin) 0 }}
+{{ $hot_waifu_skin_waifu := index (where .Site.Data.overwaifu.characters ".key" .Site.Data.overwaifu.achievements.hot_waifu_skin.character) 0 }}
+{{ $hot_waifu_skin_skin := index (where $hot_waifu_skin_waifu.skins ".key" .Site.Data.overwaifu.achievements.hot_waifu_skin.skin) 0 }}
+{{ $pure_waifu_skin_waifu := index (where .Site.Data.overwaifu.characters ".key" .Site.Data.overwaifu.achievements.pure_waifu_skin.character) 0 }}
+{{ $pure_waifu_skin_skin := index (where $pure_waifu_skin_waifu.skins ".key" .Site.Data.overwaifu.achievements.pure_waifu_skin.skin) 0 }}
+{{ $lewd_waifu_skin_waifu := index (where .Site.Data.overwaifu.characters ".key" .Site.Data.overwaifu.achievements.lewd_waifu_skin.character) 0 }}
+{{ $lewd_waifu_skin_skin := index (where $lewd_waifu_skin_waifu.skins ".key" .Site.Data.overwaifu.achievements.lewd_waifu_skin.skin) 0 }}
 
 <section class="section">
   <div class="container">
@@ -19,18 +19,18 @@
       {{ .Content }}
     </div>
     <div class="columns is-multiline">
-      {{ range $.Site.Data.waifu_achievements.items }}
+      {{ range $.Site.Data.waifu_achievements }}
         {{ $char_key := index $.Site.Data.overwaifu.achievements .type }}
-        {{ $character := index $.Site.Data.overwaifu.characters $char_key.character }}
+        {{ $character := index (where $.Site.Data.overwaifu.characters ".key" $char_key.character) 0 }}
         {{ partial "results/waifu" (dict "context" $.Site "character" $character "achievement" .) }}
       {{ end }}
     </div>
     <hr>
     <div class="columns is-multiline">
-      {{ range $.Site.Data.skins_achievements.items }}
+      {{ range $.Site.Data.skins_achievements }}
         {{ $skins_achievement := index $.Site.Data.overwaifu.achievements .type }}
-        {{ $character := index $.Site.Data.overwaifu.characters $skins_achievement.character }}
-        {{ $skin := index $character.skins $skins_achievement.skin }}
+        {{ $character := index (where $.Site.Data.overwaifu.characters ".key" $skins_achievement.character) 0 }}
+        {{ $skin := index (where $character.skins ".key" $skins_achievement.skin) 0 }}
         {{ partial "results/skin" (dict "context" $.Site "character" $character "skin" $skin "achievement" .) }}
         <br>
       {{ end }}

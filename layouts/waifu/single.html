@@ -1,5 +1,6 @@
 {{ define "content" }}
-{{ $char := index .Site.Data.overwaifu.characters .Params.slug }}
+{{ with index (where .Site.Data.overwaifu.characters ".key" .Params.slug) 0 }}
+{{ $char := . }}
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
@@ -7,12 +8,12 @@
         <div class="columns is-multiline is-mobile">
           <div class="column is-12-mobile is-4-tablet is-5-mobile has-text-centered">
             <p class="image is-128x128px">
-              <img src="/img/waifu/{{ $char.key }}.png" draggable="false">
+              <img src="/img/waifu/{{ .key }}.png" draggable="false">
             </p>
           </div>
           <div class="column is-12-mobile is-8-tablet is-7-mobile">
             <h1 class="title heading is-2">{{ .Title }}</h1>
-            <h3 class="subtitle heading is-4 has-text-grey-light">{{ $char.real_name }}</h3>
+            <h3 class="subtitle heading is-4 has-text-grey-light">{{ .real_name }}</h3>
           </div>
         </div>
       </div>
@@ -20,29 +21,29 @@
         <div class="columns is-mobile">
           <div class="column is-3-tablet is-3-mobile has-text-centered">
             <p><span class="icon tooltip is-tooltip-top is-tooltip-primary" data-tooltip="Skins"><i class="fas fa-female has-text-primary"></i></span></p>
-            <p class="title is-5">{{ len $char.skins }}</p>
+            <p class="title is-5">{{ len .skins }}</p>
           </div>
           <div class="column is-3-tablet is-3-mobile has-text-centered">
             <p><span class="icon tooltip is-tooltip-top is-tooltip-success" data-tooltip="Safe images"><i class="far fa-heart has-text-success"></i></span></p>
-            <p class="title is-5">{{ $char.score.safe }}</p>
+            <p class="title is-5">{{ .score.safe }}</p>
           </div>
           <div class="column is-3-tablet is-3-mobile has-text-centered">
             <p><span class="icon tooltip is-tooltip-top is-tooltip-warning" data-tooltip="Questionable images"><i class="fas fa-heart has-text-warning"></i></span></p>
-            <p class="title is-5">{{ $char.score.questionable }}</p>
+            <p class="title is-5">{{ .score.questionable }}</p>
           </div>
           <div class="column is-3-tablet is-3-mobile has-text-centered">
             <p><span class="icon tooltip is-tooltip-top is-tooltip-danger" data-tooltip="Explicit images"><i class="fas fa-fire has-text-danger"></i></span></p>
-            <p class="title is-5">{{ $char.score.explicit }}</p>
+            <p class="title is-5">{{ .score.explicit }}</p>
           </div>
         </div>
         <div class="columns is-mobile">
           <div class="column">
-            Pure: {{ math.Round (mul $char.score.pure 100) }}%
-            <progress class="progress is-success is-small" value="{{ $char.score.pure }}" max="1">{{ $char.score.pure }}</progress>
+            Pure: {{ math.Round (mul .score.pure 100) }}%
+            <progress class="progress is-success is-small" value="{{ .score.pure }}" max="1">{{ .score.pure }}</progress>
           </div>
           <div class="column">
-            Lewd: {{ math.Round (mul $char.score.lewd 100) }}%
-            <progress class="progress is-danger is-small" value="{{ $char.score.lewd }}" max="1">{{ $char.score.lewd }}</progress>
+            Lewd: {{ math.Round (mul .score.lewd 100) }}%
+            <progress class="progress is-danger is-small" value="{{ .score.lewd }}" max="1">{{ .score.lewd }}</progress>
           </div>
         </div>
       </div>
@@ -50,11 +51,10 @@
 
     <div class="content">{{ .Content }}</div>
     <div class="content">
-      {{ $char.name }} ({{ $char.real_name }}) has {{ len $char.skins }} skins. There are {{ $char.score.all }} pictures in <a href="https://chan.sankakucomplex.com/?{{ querify "tags" $char.tag | safeURL }}">Sankaku Channel</a> collection ({{ $char.score.safe }} safe, {{ $char.score.questionable }} questionable and {{ $char.score.explicit }} explicit images). {{ if gt $char.score.virgin_killer_sweater 0 }}Also she putted on a <a href="http://knowyourmeme.com/memes/virgin-killing-sweater">virgin killer sweater</a> {{ $char.score.virgin_killer_sweater }} times.{{ end }} {{ if gt $char.score.selfie 0 }}{{ $char.name }} made {{ $char.score.selfie }} selfies.{{ end }}
+      {{ .name }} ({{ .real_name }}) has {{ len .skins }} skins. There are {{ .score.all }} pictures in <a href="https://chan.sankakucomplex.com/?{{ querify "tags" .tag | safeURL }}">Sankaku Channel</a> collection ({{ .score.safe }} safe, {{ .score.questionable }} questionable and {{ .score.explicit }} explicit images). {{ if gt .score.virgin_killer_sweater 0 }}Also she putted on a <a href="http://knowyourmeme.com/memes/virgin-killing-sweater">virgin killer sweater</a> {{ .score.virgin_killer_sweater }} times.{{ end }} {{ if gt .score.selfie 0 }}{{ .name }} made {{ .score.selfie }} selfies.{{ end }}
     </div>
     <div class="columns is-multiline">
-      {{ range sort $char.skins "score.all" "desc" }}
-      {{ if gt .score.all 0 }}
+      {{ range sort (where .skins ".score.all" "!=" nil) ".score.all" "desc" }}
       <div class="column is-one-third-tablet is-one-quarter-desktop">
         <div class="card is-fullheight">
           <div class="card-image">
@@ -95,7 +95,6 @@
         </div>
       </div>
       {{ end }}
-      {{ end }}
     </div>
 
     <div class="content is-small">
@@ -116,4 +115,5 @@
   </div>
 </div>
 </section>
+{{ end }}
 {{ end }}

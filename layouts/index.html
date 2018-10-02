@@ -73,7 +73,7 @@
           <p class="is-size-4-tablet">Here is the icon of the most popular waifu at this time.</p>
         </div>
         <div class="column has-text-centered is-hidden-mobile">
-          {{ $fame_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.fame_waifu.character }}
+          {{ $fame_waifu := index (where .Site.Data.overwaifu.characters ".key" .Site.Data.overwaifu.achievements.fame_waifu.character) 0 }}
           <!-- <span class="ow-ohi-{{ .Site.Data.overwaifu.achievements.fame_waifu.character }}" style="font-size: 10rem"></span> -->
         </div>
       </div>
@@ -107,7 +107,7 @@
           <a class="button is-primary is-outlined is-large is-rounded" href="/husbando">Check it out</a>
         </div>
         <div class="column has-text-centered is-hidden-mobile">
-          {{ $fake_waifu := index .Site.Data.overwaifu.characters .Site.Data.overwaifu.achievements.fake_waifu.character }}
+          {{ $fake_waifu := index (where .Site.Data.overwaifu.characters ".key" .Site.Data.overwaifu.achievements.fake_waifu.character) 0 }}
         </div>
       </div>
     </div>

@@ -4,8 +4,7 @@
     <h1 class="title is-2 is-overwatch">{{ .Title }}</h1>
     <div class="content">{{ .Content }}</div>
     <div class="columns is-multiline">
-      {{ range where (sort $.Site.Data.overwaifu.characters "score.all" "desc") "sex" "female" }}
-      {{ if eq .sex "female" }}
+      {{ range where (sort .Site.Data.overwaifu.characters "score.all" "desc") "sex" "female" }}
       <div class="column is-one-third-tablet is-one-quarter-desktop">
         <div class="card is-fullheight">
           <div class="card-image">
@@ -42,7 +41,6 @@
           </div>
         </div>
       </div>
-      {{ end }}
       {{ end }}
     </div>
   </div>
