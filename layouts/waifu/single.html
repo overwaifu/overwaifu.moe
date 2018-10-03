@@ -1,6 +1,5 @@
 {{ define "content" }}
 {{ with index (where .Site.Data.overwaifu.characters ".key" .Params.slug) 0 }}
-{{ $char := . }}
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
@@ -12,7 +11,7 @@
             </p>
           </div>
           <div class="column is-12-mobile is-8-tablet is-7-mobile">
-            <h1 class="title heading is-2">{{ .Title }}</h1>
+            <h1 class="title heading is-2">{{ .name }}</h1>
             <h3 class="subtitle heading is-4 has-text-grey-light">{{ .real_name }}</h3>
           </div>
         </div>
@@ -59,7 +58,7 @@
         <div class="card is-fullheight">
           <div class="card-image">
             <figure class="image is-1by1">
-              <img src="/img/skins/{{ $char.key }}/{{ .key }}.png" draggable="false">
+              <img src="/img/skins/{{ $.Slug }}/{{ .key }}.png" draggable="false">
             </figure>
           </div>
           <div class="card-content">
