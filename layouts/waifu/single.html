@@ -47,7 +47,6 @@
         </div>
       </div>
     </div>
-
     <div class="content">{{ .Content }}</div>
     <div class="content">
       {{ .name }} ({{ .real_name }}) has {{ len .skins }} skins. There are {{ .score.all }} pictures in <a href="https://chan.sankakucomplex.com/?{{ querify "tags" .tag | safeURL }}">Sankaku Channel</a> collection ({{ .score.safe }} safe, {{ .score.questionable }} questionable and {{ .score.explicit }} explicit images). {{ if gt .score.virgin_killer_sweater 0 }}Also she putted on a <a href="http://knowyourmeme.com/memes/virgin-killing-sweater">virgin killer sweater</a> {{ .score.virgin_killer_sweater }} times.{{ end }} {{ if gt .score.selfie 0 }}{{ .name }} made {{ .score.selfie }} selfies.{{ end }}

@@ -5,28 +5,3 @@
     margin-top: auto
   &.is-fullheight
     height: 100%
-
-// Horizontal Card
-// See: https://github.com/jgthms/bulma/pull/1596/
-=horizontal-card
-  flex-direction: row
-  display: flex
-  flex-basis: 50ex
-  flex-grow: 0
-  flex-shrink: 1
-  .card-image
-    flex: 1
-    .image
-      min-height: 100%
-  .card-content
-    flex: 2
-  &.is-right
-    flex-direction: row-reverse
-
-.card
-  &.is-horizontal
-    +tablet
-      +horizontal-card
-    &.is-mobile
-      +mobile
-        +horizontal-card
