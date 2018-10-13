@@ -1,4 +1,3 @@
 ---
 title: Mei
-slug: mei
 ---

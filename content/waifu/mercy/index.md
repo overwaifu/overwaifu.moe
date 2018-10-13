@@ -1,4 +1,3 @@
 ---
 title: Mercy
-slug: mercy
 ---

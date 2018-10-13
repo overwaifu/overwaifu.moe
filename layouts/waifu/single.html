@@ -1,63 +1,61 @@
+{{ define "header" }}
+{{ $slug := index (split .URL "/") 2 }}
+{{ $background := $.Resources.GetMatch "background*" }}
+{{ with index (where .Site.Data.overwaifu.characters ".key" $slug) 0 }}
+<header class="hero is-medium is-primary has-background">
+  {{ if $background }}
+  <img class="hero-background is-transparent" src="{{ $background.RelPermalink }}" draggable="false">
+  {{ end }}
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-4">
+          <h1 class="title heading is-3 is-overwatch">{{ .name }}</h1>
+          <h3 class="subtitle heading is-5">{{ .real_name }}</h3>
+        </div>
+        <div class="column is-8">
+          <div class="columns is-multiline">
+            <div class="column is-6">
+              {{ partial "waifu/score" (dict "description" "Safe" "score" .score.safe "icon" "heart" "icon_variant" "far") }}
+              {{ partial "waifu/score" (dict "description" "Questionable" "score" .score.questionable "icon" "heart") }}
+              {{ partial "waifu/score" (dict "description" "Explicit" "score" .score.explicit "icon" "fire") }}
+            </div>
+            <div class="column is-6">
+              {{ partial "waifu/score" (dict "description" "Skins" "score" (len .skins) "icon" "tshirt") }}
+              {{ partial "waifu/score" (dict "description" "Selfies" "score" .score.selfie "icon" "camera-retro") }}
+              {{ partial "waifu/score" (dict "description" "VK Sweater" "score" .score.virgin_killer_sweater "icon" "snowflake" "icon_variant" "far") }}
+            </div>
+          </div>
+          <div class="columns is-mobile">
+            <div class="column">
+              Pure: {{ math.Round (mul .score.pure 100) }}%
+              <progress class="progress is-success is-small" value="{{ .score.pure }}" max="1">{{ .score.pure }}</progress>
+            </div>
+            <div class="column">
+              Lewd: {{ math.Round (mul .score.lewd 100) }}%
+              <progress class="progress is-danger is-small" value="{{ .score.lewd }}" max="1">{{ .score.lewd }}</progress>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{{ end }}
+{{ end }}
+
 {{ define "content" }}
-{{ with index (where .Site.Data.overwaifu.characters ".key" .Params.slug) 0 }}
+{{ $slug := index (split .URL "/") 2 }}
+{{ with index (where .Site.Data.overwaifu.characters ".key" $slug) 0 }}
 <section class="section">
   <div class="container">
-    <div class="columns is-multiline">
-      <div class="column is-4">
-        <div class="columns is-multiline is-mobile">
-          <div class="column is-12-mobile is-4-tablet is-5-mobile has-text-centered">
-            <p class="image is-128x128px">
-              <img src="/img/waifu/{{ .key }}.png" draggable="false">
-            </p>
-          </div>
-          <div class="column is-12-mobile is-8-tablet is-7-mobile">
-            <h1 class="title heading is-2">{{ .name }}</h1>
-            <h3 class="subtitle heading is-4 has-text-grey-light">{{ .real_name }}</h3>
-          </div>
-        </div>
-      </div>
-      <div class="column is-8">
-        <div class="columns is-mobile">
-          <div class="column is-3-tablet is-3-mobile has-text-centered">
-            <p><span class="icon tooltip is-tooltip-top is-tooltip-primary" data-tooltip="Skins"><i class="fas fa-female has-text-primary"></i></span></p>
-            <p class="title is-5">{{ len .skins }}</p>
-          </div>
-          <div class="column is-3-tablet is-3-mobile has-text-centered">
-            <p><span class="icon tooltip is-tooltip-top is-tooltip-success" data-tooltip="Safe images"><i class="far fa-heart has-text-success"></i></span></p>
-            <p class="title is-5">{{ .score.safe }}</p>
-          </div>
-          <div class="column is-3-tablet is-3-mobile has-text-centered">
-            <p><span class="icon tooltip is-tooltip-top is-tooltip-warning" data-tooltip="Questionable images"><i class="fas fa-heart has-text-warning"></i></span></p>
-            <p class="title is-5">{{ .score.questionable }}</p>
-          </div>
-          <div class="column is-3-tablet is-3-mobile has-text-centered">
-            <p><span class="icon tooltip is-tooltip-top is-tooltip-danger" data-tooltip="Explicit images"><i class="fas fa-fire has-text-danger"></i></span></p>
-            <p class="title is-5">{{ .score.explicit }}</p>
-          </div>
-        </div>
-        <div class="columns is-mobile">
-          <div class="column">
-            Pure: {{ math.Round (mul .score.pure 100) }}%
-            <progress class="progress is-success is-small" value="{{ .score.pure }}" max="1">{{ .score.pure }}</progress>
-          </div>
-          <div class="column">
-            Lewd: {{ math.Round (mul .score.lewd 100) }}%
-            <progress class="progress is-danger is-small" value="{{ .score.lewd }}" max="1">{{ .score.lewd }}</progress>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="content">{{ .Content }}</div>
-    <div class="content">
-      {{ .name }} ({{ .real_name }}) has {{ len .skins }} skins. There are {{ .score.all }} pictures in <a href="https://chan.sankakucomplex.com/?{{ querify "tags" .tag | safeURL }}">Sankaku Channel</a> collection ({{ .score.safe }} safe, {{ .score.questionable }} questionable and {{ .score.explicit }} explicit images). {{ if gt .score.virgin_killer_sweater 0 }}Also she putted on a <a href="http://knowyourmeme.com/memes/virgin-killing-sweater">virgin killer sweater</a> {{ .score.virgin_killer_sweater }} times.{{ end }} {{ if gt .score.selfie 0 }}{{ .name }} made {{ .score.selfie }} selfies.{{ end }}
-    </div>
     <div class="columns is-multiline">
       {{ range sort (where .skins ".score.all" "!=" nil) ".score.all" "desc" }}
       <div class="column is-one-third-tablet is-one-quarter-desktop">
         <div class="card is-fullheight">
           <div class="card-image">
             <figure class="image is-1by1">
-              <img src="/img/skins/{{ $.Slug }}/{{ .key }}.png" draggable="false">
+              <img src="/img/skins/{{ $slug }}/{{ .key }}.png" draggable="false">
             </figure>
           </div>
           <div class="card-content">

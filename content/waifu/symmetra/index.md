@@ -1,4 +1,3 @@
 ---
 title: Symmetra
-slug: symmetra
 ---

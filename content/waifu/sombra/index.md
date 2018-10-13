@@ -1,4 +1,3 @@
 ---
 title: Sombra
-slug: sombra
 ---

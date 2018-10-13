@@ -1,4 +1,3 @@
 ---
 title: Pharah
-slug: pharah
 ---

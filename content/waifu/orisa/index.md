@@ -1,4 +1,3 @@
 ---
 title: Orisa
-slug: orisa
 ---

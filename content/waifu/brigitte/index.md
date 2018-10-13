@@ -1,4 +1,3 @@
 ---
 title: Brigitte
-slug: brigitte
 ---

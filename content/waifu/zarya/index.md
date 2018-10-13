@@ -1,4 +1,3 @@
 ---
 title: Zarya
-slug: zarya
 ---

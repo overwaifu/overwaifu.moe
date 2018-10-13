@@ -1,4 +1,3 @@
 ---
 title: Ana
-slug: ana
 ---

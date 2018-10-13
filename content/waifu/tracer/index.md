@@ -1,4 +1,3 @@
 ---
 title: Tracer
-slug: tracer
 ---
