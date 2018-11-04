@@ -20,15 +20,15 @@
             <div class="columns is-mobile">
               <div class="column has-text-centered">
                 <p><span class="icon tooltip is-tooltip-top is-tooltip-success" data-tooltip="Safe images"><i class="far fa-heart has-text-success"></i></span></p>
-                <p class="title is-5">{{ .score.safe }}</p>
+                <p class="title is-5">{{ .score.safe | default 0 }}</p>
               </div>
               <div class="column has-text-centered">
                 <p><span class="icon tooltip is-tooltip-top is-tooltip-warning" data-tooltip="Questionable images"><i class="fas fa-heart has-text-warning"></i></span></p>
-                <p class="title is-5">{{ .score.questionable }}</p>
+                <p class="title is-5">{{ .score.questionable | default 0 }}</p>
               </div>
               <div class="column has-text-centered">
                 <p><span class="icon tooltip is-tooltip-top is-tooltip-danger" data-tooltip="Explicit images"><i class="fas fa-fire has-text-danger"></i></span></p>
-                <p class="title is-5">{{ .score.explicit }}</p>
+                <p class="title is-5">{{ .score.explicit | default 0 }}</p>
               </div>
             </div>
             {{/*

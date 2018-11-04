@@ -6,6 +6,6 @@
     <p class="title heading is-6">{{ .description }}</p>
   </div>
   <div class="column is-3-mobile is-3-tablet">
-    <p class="title is-4">{{ .score }}</p>
+    <p class="title is-4">{{ .score | default 0 }}</p>
   </div>
 </div>
