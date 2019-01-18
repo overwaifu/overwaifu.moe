@@ -32,7 +32,6 @@
         {{ $character := index (where $.Site.Data.overwaifu.characters ".key" $skins_achievement.character) 0 }}
         {{ $skin := index (where $character.skins ".key" $skins_achievement.skin) 0 }}
         {{ partial "results/skin" (dict "context" $.Site "character" $character "skin" $skin "achievement" .) }}
-        <br>
       {{ end }}
     </div>
   </div>
