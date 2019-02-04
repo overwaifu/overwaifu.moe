@@ -3,7 +3,7 @@
   command = "./scripts/build.sh && hugo --minify"
 
 [context.production.environment]
-  HUGO_VERSION = "0.53"
+  HUGO_VERSION = "0.54.0"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
 
@@ -11,13 +11,13 @@
   command = "./scripts/build.sh && hugo --buildDrafts --buildFuture -b $DEPLOY_PRIME_URL"
 
   [context.deploy-preview.environment]
-    HUGO_VERSION = "0.53"
+    HUGO_VERSION = "0.54.0"
 
 [context.branch-deploy]
   command = "./scripts/build.sh && hugo --buildDrafts --buildFuture -b $DEPLOY_PRIME_URL"
 
   [context.branch-deploy.environment]
-    HUGO_VERSION = "0.53"
+    HUGO_VERSION = "0.54.0"
 
 [[redirects]]
   from = "https://overwaifu.netlify.com/*"
