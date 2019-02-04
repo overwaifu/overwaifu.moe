@@ -27,7 +27,7 @@
   "homepage": "https://github.com/overwaifu/overwaifu.moe#readme",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.1.0",
-    "autoprefixer": "^9.4.3",
+    "autoprefixer": "^9.4.7",
     "cssnano": "^4.1.8",
     "install": "^0.12.2",
     "node-sass": "^4.11.0",
