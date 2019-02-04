@@ -32,7 +32,7 @@
     "install": "^0.12.2",
     "node-sass": "^4.11.0",
     "postcss-cli": "^6.1.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.3"
   },
   "dependencies": {
     "bulma": "^0.7.2",
