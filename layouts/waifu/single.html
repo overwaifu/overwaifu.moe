@@ -48,10 +48,9 @@
 {{ $slug := index (split .URL "/") 2 }}
 {{ with index (where .Site.Data.overwaifu.characters ".key" $slug) 0 }}
 <section class="section">
-  <div class="container">
-    <div class="columns is-multiline">
+  <div class="container is-fluid">
+    <div class="cards">
       {{ range sort (where .skins ".score.all" "!=" nil) ".score.all" "desc" }}
-      <div class="column is-one-third-tablet is-one-quarter-desktop">
         <div class="card is-fullheight">
           <div class="card-image">
             <figure class="image is-1by1">
@@ -76,39 +75,19 @@
                 <p class="title is-5">{{ .score.explicit | default 0 }}</p>
               </div>
             </div>
-            {{/*
-            {{ if gt .score.pure 0 }}
-            <progress class="progress is-success is-small" value="{{ .score.pure }}" max="1">{{ .score.pure }}</progress>
-            {{ end }}
-            {{ if gt .score.lewd 0 }}
-            <progress class="progress is-danger is-small" value="{{ .score.lewd }}" max="1">{{ .score.lewd }}</progress>
-            {{ end }}
-            */}}
           </div>
           <div class="card-footer">
             <a href="https://chan.sankakucomplex.com/?{{ querify "tags" (index .tags 0) | safeURL }}" target="_blank" class="card-footer-item">View on Sankaku Channel</a>
           </div>
         </div>
-      </div>
       {{ end }}
     </div>
-
-    <div class="content is-small">
-      <hr />
-      <blockquote>
-        <p>
-          <span class="icon"><i class="far fa-heart has-text-success"></i></span> Safe posts are images that you would not feel guilty looking at openly in public. Pictures of nudes, exposed nipples or pubic hair, cameltoe, or any sort of sexually suggestive pose are NOT safe and belong in questionable. Swimsuits and lingerie are borderline cases; some are safe, some are questionable.
-          <br />
-          <span class="icon"><i class="fas fa-heart has-text-warning"></i></span> Basically anything that isn't safe or explicit. This is the great middle area, and since it includes unrated posts, you shouldn't really expect anything one way or the other when browsing questionable posts.
-          <br />
-          <span class="icon"><i class="fas fa-fire has-text-danger"></i></span> Any image where the vagina or penis are exposed and easily visible. This includes depictions of sex, masturbation, or any sort of penetration.
-        </p>
-        <p>
-          See <a href="/credits">credits</a> for proper credits.
-        </p>
-      </blockquote>
-    </div>
   </div>
+</div>
+
+<hr />
+<div class="container">
+  {{ partial "legend" . }}
 </div>
 </section>
 {{ end }}

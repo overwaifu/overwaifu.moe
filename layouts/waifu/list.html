@@ -1,12 +1,11 @@
 {{ define "content" }}
 <section class="section">
-  <div class="container">
+  <div class="container is-fluid">
     <h1 class="title is-2 is-overwatch">{{ .Title }}</h1>
     <div class="content">{{ .Content }}</div>
-    <div class="columns is-multiline">
+    <div class="cards">
       {{ range where (sort .Site.Data.overwaifu.characters "score.all" "desc") "sex" "female" }}
-      <div class="column is-one-third-tablet is-one-quarter-desktop">
-        <div class="card is-fullheight">
+        <div class="card">
           <div class="card-image">
             <a href="/waifu/{{ .key }}">
             <figure class="image is-1by1">
@@ -40,10 +39,14 @@
             <a href="https://chan.sankakucomplex.com/?{{ querify "tags" (index .tags 0) | safeURL }}" target="_blank" class="card-footer-item">View on Sankaku Channel</a>
           </div>
         </div>
-      </div>
       {{ end }}
     </div>
   </div>
+</div>
+
+<hr />
+<div class="container">
+  {{ partial "legend" . }}
 </div>
 </section>
 {{ end }}

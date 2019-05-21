@@ -1,7 +1,24 @@
-.card
-  display: flex
-  flex-direction: column
-  &-footer
-    margin-top: auto
-  &.is-fullheight
+$card-width: 18rem
+
+.cards
+  display: grid
+  grid-column-gap: 1rem
+  grid-row-gap: 1.5rem
+  align-content: flex-start
+  +tablet
+    justify-content: space-between
+    grid-template-columns: repeat(auto-fill, $card-width)
+  &.is-large
+    grid-gap: 1.5rem
+    grid-template-columns: repeat(1, 1fr)
+    +tablet
+      grid-template-columns: repeat(2, 1fr)
+    +widescreen
+      grid-template-columns: repeat(3, 1fr)
+
+  .card
+    display: flex
+    flex-direction: column
     height: 100%
+    &-footer
+      margin-top: auto

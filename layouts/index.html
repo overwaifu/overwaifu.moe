@@ -9,28 +9,11 @@
           </div>
           <p class="is-size-4-tablet">Guess who is the most popular waifu in the Overwatch?</p>
         </div>
-
         <div class="column">
-          {{ range first 1 (sort .Site.Data.overwaifu.characters "score.all" "desc") }}
+          {{ range first 3 (sort .Site.Data.overwaifu.characters "score.all" "desc") }}
           <div class="columns is-mobile">
-            <div class="column is-hidden-mobile is-2-tablet">
-              <!-- <span class="icon is-large ow-ohi-{{ .key }}" style="font-size: 3em"></span> -->
-            </div>
             <div class="column">
               <p class="title heading is-4">{{ .name }}</p>
-              <p class="subtitle heading is-6 is-overwatch">{{ .real_name }}</p>
-            </div>
-            <div class="column is-3-mobile is-4-tablet has-text-centered">
-              <p class="heading is-overwatch">Score</p>
-              <p class="title is-5">{{ .score.all }}</p>
-            </div>
-          </div>
-          {{ end }}
-          {{ range first 2 (after 1 (sort $.Site.Data.overwaifu.characters "score.all" "desc")) }}
-          <div class="columns is-mobile">
-            <div class="column is-hidden-mobile is-2-tablet is-offset-1-tablet"></div>
-            <div class="column">
-              <p class="title heading is-5">{{ .name }}</p>
               <p class="subtitle heading is-6 is-overwatch">{{ .real_name }}</p>
             </div>
             <div class="column is-3-mobile is-4-tablet has-text-centered">
@@ -51,11 +34,9 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns is-vcentered">
-        <div class="column has-text-centered is-hidden-mobile"></div>
-        <div class="column is-two-thirds">
+        <div class="column is-two-thirds is-offset-one-third">
           <h2 class="title is-2 is-overwatch">What is OverWaifu.moe?</h2>
-          <p class="is-size-4-tablet">OverWaifu.moe is a website developed by an OverWatch fan. As you may notice some characters get more attention than others. While there are several websites which track the pickrate this website tracks the popularity according to characters' personality. Right now, all this statistics is gathered from Sankaku Channel.</p>
-          <br>
+          <p class="content is-size-4-tablet">OverWaifu.moe is a website developed by an OverWatch fan. As you may notice some characters get more attention than others. While there are several websites which track the pickrate this website tracks the popularity according to characters' personality. Right now, all this statistics is gathered from Sankaku Channel.</p>
           <a class="button is-primary is-large is-rounded" href="/waifu">Check it out</a>
         </div>
       </div>
@@ -70,11 +51,6 @@
         <div class="column is-two-thirds">
           <h2 class="title is-2 is-overwatch">We don't nerf your waifu</h2>
           <p class="is-size-4-tablet">We only get statistics about them, replacing defence matrix with nano-missiles is a job for the real professionals.</p>
-          <p class="is-size-4-tablet">Here is the icon of the most popular waifu at this time.</p>
-        </div>
-        <div class="column has-text-centered is-hidden-mobile">
-          {{ $fame_waifu := index (where .Site.Data.overwaifu.characters ".key" .Site.Data.overwaifu.achievements.fame_waifu.character) 0 }}
-          <!-- <span class="ow-ohi-{{ .Site.Data.overwaifu.achievements.fame_waifu.character }}" style="font-size: 10rem"></span> -->
         </div>
       </div>
     </div>
@@ -85,8 +61,7 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns is-vcentered">
-        <div class="column has-text-centered is-hidden-mobile"></div>
-        <div class="column is-two-thirds">
+        <div class="column is-two-thirds is-offset-one-third">
           <h2 class="title is-2 is-overwatch">ARG free zone</h2>
           <p class="is-size-4-tablet">We have no secrets from you. Also we have no timers and countdowns. But even if you really want a countown... we still don't have any.</p>
           <p class="is-size-4-tablet">More cool charts and features are coming at "when it done".</p>
@@ -105,9 +80,6 @@
           <p class="is-size-4-tablet">We also provide statistics for husbando. But there are not many images with them.</p>
           <br>
           <a class="button is-primary is-outlined is-large is-rounded" href="/husbando">Check it out</a>
-        </div>
-        <div class="column has-text-centered is-hidden-mobile">
-          {{ $fake_waifu := index (where .Site.Data.overwaifu.characters ".key" .Site.Data.overwaifu.achievements.fake_waifu.character) 0 }}
         </div>
       </div>
     </div>

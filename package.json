@@ -25,18 +25,18 @@
     "url": "https://github.com/overwaifu/overwaifu.moe/issues"
   },
   "homepage": "https://github.com/overwaifu/overwaifu.moe#readme",
-  "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^1.1.0",
-    "autoprefixer": "^9.4.7",
-    "cssnano": "^4.1.8",
-    "install": "^0.12.2",
-    "node-sass": "^4.11.0",
-    "npm-run-all": "^4.1.5",
-    "postcss-cli": "^6.1.1",
-    "rimraf": "^2.6.3"
-  },
   "dependencies": {
     "bulma": "^0.7.4",
     "bulma-tooltip": "^2.0.2"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "autoprefixer": "^9.5.1",
+    "cssnano": "^4.1.10",
+    "install": "^0.12.2",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.2",
+    "rimraf": "^2.6.3"
   }
 }

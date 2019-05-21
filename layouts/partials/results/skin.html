@@ -11,26 +11,24 @@
 {{ $text := replace $text "{{ .skin.purity }}" $purity }}
 {{ $text := replace $text "{{ .skin.lewdness }}" $lewdness }}
 
-<div class="column is-one-third-tablet is-one-quarter-desktop">
-  <div class="card is-fullheight">
-    <div class="card-header">
-        <p class="card-header-title">{{ $.achievement.title }}</p>
-        <span class="card-header-icon">
-          <span class="icon tooltip is-tooltip-left is-tooltip-primary" data-tooltip="{{ $.achievement.description }}">
-            <i class="far fa-question-circle" aria-hidden="true"></i>
-          </span>
+<div class="card">
+  <div class="card-header">
+      <p class="card-header-title">{{ $.achievement.title }}</p>
+      <span class="card-header-icon">
+        <span class="icon tooltip is-tooltip-left is-tooltip-primary" data-tooltip="{{ $.achievement.description }}">
+          <i class="far fa-question-circle" aria-hidden="true"></i>
         </span>
-      </div>
-    <div class="card-image">
-      <figure class="image is-square">
-        <img src="/img/skins/{{ .key }}/{{ $.skin.key }}.png" draggable="false">
-      </figure>
+      </span>
     </div>
-    <div class="card-content">
-      <h2 class="title heading is-4">{{ .name }} <span class="has-text-{{ $.skin.rarity }}">{{ $.skin.name }}</span></h2>
-      <h3 class="subtitle heading is-6 is-overwatch has-text-grey-light">{{ .real_name }}</h3>
-      <p>{{ $text | markdownify }}</p>
-    </div>
+  <div class="card-image">
+    <figure class="image is-square">
+      <img src="/img/skins/{{ .key }}/{{ $.skin.key }}.png" draggable="false">
+    </figure>
+  </div>
+  <div class="card-content">
+    <h2 class="title heading is-4">{{ .name }} <span class="has-text-{{ $.skin.rarity }}">{{ $.skin.name }}</span></h2>
+    <h3 class="subtitle heading is-6 is-overwatch has-text-grey-light">{{ .real_name }}</h3>
+    <p>{{ $text | markdownify }}</p>
   </div>
 </div>
 {{ end }}

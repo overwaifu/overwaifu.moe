@@ -1,12 +1,11 @@
 {{ define "content" }}
 <section class="section">
-  <div class="container">
+  <div class="container is-fluid">
     <h1 class="title is-2 is-overwatch">{{ .Title }}</h1>
     <div class="content">{{ .Content }}</div>
-    <div class="columns is-multiline">
+    <div class="cards is-large">
       {{ range where (sort .Site.Data.overwaifu.characters "score.all" "desc") "sex" "male" }}
-      <div class="column is-half">
-        <div class="card is-fullheight">
+      <div class="card">
           <div class="card-content">
             <p class="title heading is-4">{{ .name }}</p>
             <p class="subtitle heading is-6 is-overwatch has-text-grey-light">{{ .real_name }}</p>
@@ -40,7 +39,6 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
       {{ end }}
     </div>
